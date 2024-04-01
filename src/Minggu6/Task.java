@@ -9,6 +9,10 @@ public class Task {
         this.deskripsi = deskripsi;
     }
 
+    public String getJudul() {
+        return judul;
+    }
+
     @Override
     public String toString() {
         return "Judul: " + judul + ", Deskripsi: " + deskripsi;

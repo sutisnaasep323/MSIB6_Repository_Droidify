@@ -2,12 +2,12 @@ package Minggu6;
 
 import java.util.*;
 
-public class Main {
+public class MainTask {
 
     private List<Task> tasks;
     private Scanner scanner;
 
-    public Main() {
+    public MainTask() {
         scanner = new Scanner(System.in);
         tasks = new LinkedList<>(); // Default adalah LinkedList
     }
@@ -103,6 +103,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main().start();
+        new MainTask().start();
     }
 }

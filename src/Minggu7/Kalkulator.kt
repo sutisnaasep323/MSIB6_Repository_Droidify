@@ -1,5 +1,7 @@
 package Minggu7
 
+import java.util.*
+
 class Kalkulator {
     fun tambah(a: Int, b: Int): Int {
         return a + b
@@ -22,50 +24,46 @@ class Kalkulator {
 }
 
 fun main() {
-    val calculator = Kalkulator()
+    val scanner = Scanner(System.`in`)
+    val kalkulator = Kalkulator()
 
-    println("Selamat datang di kalkulator sederhana!")
-    println("Masukkan operasi matematika (tambah, kurang, kali, atau bagi):")
+    var pilihan = 0
+    while (pilihan != 5) {
 
-    // Keep asking for user input until they type "keluar"
-    while (true) {
-        print("> ")
-        val input = readLine()
+        println("===[ Kalkulator Tim Droidify ]====")
 
-        if (input == "keluar") {
-            println("Terima kasih telah menggunakan kalkulator sederhana ini.")
-            break
+        print("Masukkan angka pertama: ")
+        val angka1 = scanner.nextInt()
+        print("Masukkan angka kedua: ")
+        val angka2 = scanner.nextInt()
+
+        println("\nPilih Operasi Matematika:")
+        println("1. Tambah")
+        println("2. Kurang")
+        println("3. Kali")
+        println("4. Bagi")
+        println("5. Keluar")
+        print("Masukkan pilihan Anda: ")
+
+        pilihan = scanner.nextInt()
+
+        if (pilihan == 1) {
+            val hasil = kalkulator.tambah(angka1, angka2)
+            println("Hasil penjumlahan: $hasil")
+        } else if (pilihan == 2) {
+            val hasil = kalkulator.kurang(angka1, angka2)
+            println("Hasil pengurangan: $hasil")
+        } else if (pilihan == 3) {
+            val hasil = kalkulator.kali(angka1, angka2)
+            println("Hasil perkalian: $hasil")
+        } else if (pilihan == 4) {
+            val hasil = kalkulator.bagi(angka1, angka2)
+            println("Hasil pembagian: $hasil")
+        } else if (pilihan == 5) {
+            println("Terima kasih telah menggunakan kalkulator.")
+        } else {
+            println("Pilihan tidak valid.")
         }
-
-        val parts = input?.split(" ") ?: continue
-        if (parts.size != 3) {
-            println("Mohon masukkan format yang benar: operasi bilangan1 bilangan2")
-            continue
-        }
-
-        val operation = parts[0]
-        val num1 = parts[1].toIntOrNull()
-        val num2 = parts[2].toIntOrNull()
-
-        if (num1 == null || num2 == null) {
-            println("Mohon masukkan bilangan bulat yang valid.")
-            continue
-        }
-
-        var result: Any? = null
-        try {
-            when (operation.toLowerCase()) {
-                "tambah" -> result = calculator.tambah(num1, num2)
-                "kurang" -> result = calculator.kurang(num1, num2)
-                "kali" -> result = calculator.kali(num1, num2)
-                "bagi" -> result = calculator.bagi(num1, num2)
-                else -> println("Mohon masukkan operasi matematika yang valid.")
-            }
-        } catch (e: ArithmeticException) {
-            println(e.message)
-            continue
-        }
-
-        println("Hasil: $result")
+        println()
     }
 }

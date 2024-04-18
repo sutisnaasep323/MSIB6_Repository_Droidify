@@ -20,6 +20,16 @@ data class Kontak(
                 return email
         }
 }
+
+// A sample class to demonstrate extension functions
+class Circle (val radius: Double){
+    // member function of class
+    fun area(): Double{
+        return Math.PI * radius * radius;
+    }
+}
+
+
 class PengelolaKontak {
         private val kontakList: MutableList<Kontak> = mutableListOf()
         //Atribut kontakList tetap private karena ini merupakan struktur data internal dari kelas PengelolaKontak dan tidak seharusnya diakses langsung dari luar
@@ -55,6 +65,16 @@ class PengelolaKontak {
 fun main() {
         val scanner = Scanner(System.`in`)
         val pengelolaKontak = PengelolaKontak()
+
+        fun Circle.perimeter(): Double{
+                return 2*Math.PI*radius;
+        }
+
+        val newCircle = Circle(2.5);
+        // invoke member function
+        println("Area of the circle is ${newCircle.area()}")
+        // invoke extension function
+        println("Perimeter of the circle is ${newCircle.perimeter()}")
 
         println("Selamat datang di Pengelola Kontak!")
 

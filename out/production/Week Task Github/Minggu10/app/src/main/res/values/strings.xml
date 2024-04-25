@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SimpleCalculator</string>
+    <string name="input_value1">Masukkan Nilai 1</string>
+    <string name="input_value2">Masukkan Nilai 2</string>
+    <string name="droidify_calculator">Droidify Calculator</string>
+    <string name="add">Tambah</string>
+    <string name="multiple">Kali</string>
+    <string name="devide">Bagi</string>
+    <string name="subtract">Kurang</string>
+    <string name="result">Hasil</string>
+</resources>

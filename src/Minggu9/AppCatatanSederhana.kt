@@ -35,14 +35,46 @@ class AppCatatanSederhana {
 }
 
 suspend fun main() {
-        val app = AppCatatanSederhana()
-        app.tambahCatatan(Catatan("Note 1", "This is note 1"))
-        app.tambahCatatan(Catatan("Note 2", "This is note 2"))
+        val pengelolaCatatan = AppCatatanSederhana()
 
-        // Menggunakan coroutine untuk menampilkan daftar catatan secara asynchronous
-        val daftarCatatan = app.tampilkanDaftarCatatanAsync()
-        println("Menampilkan daftar catatan secara asynchronous...")
-        daftarCatatan.forEachIndexed { index, catatan ->
-                println("${index + 1}. ${catatan.judul} - ${catatan.konten}")
+        println("Selamat datang di Aplikasi Catatan Sederhana!")
+
+        var isRunning = true
+        while (isRunning) {
+                println("""
+                    Pilih operasi yang ingin dilakukan:
+                    1. Tambah Catatan
+                    2. Tampilkan Daftar Catatan
+                    3. Keluar
+                """.trimIndent())
+
+                print("Masukkan pilihan (1/2/3): ")
+                when (readLine()?.toIntOrNull()) {
+                        1 -> {
+                                print("Masukkan judul catatan: ")
+                                val judul = readLine().toString()
+                                print("Masukkan konten catatan: ")
+                                val konten = readLine().toString()
+                                val catatan = Catatan(judul, konten)
+                                pengelolaCatatan.tambahCatatan(catatan)
+                        }
+                        2 -> {
+                                println("Menampilkan daftar catatan...")
+                                try {
+                                        coroutineScope {
+                                                pengelolaCatatan.tampilkanDaftarCatatan()
+                                        }
+                                } catch (e: Exception) {
+                                        println("Terjadi kesalahan saat menampilkan daftar catatan: ${e.message}")
+                                }
+                        }
+                        3 -> {
+                                println("Terima kasih!")
+                                isRunning = false
+                        }
+                        else -> {
+                                println("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.")
+                        }
+                }
         }
 }

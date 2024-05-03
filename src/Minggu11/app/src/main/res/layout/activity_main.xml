@@ -11,19 +11,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="8dp">
 
         <TextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}" />
+            android:text="usename" />
 
         <TextView
             android:id="@+id/user_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:user_age="@{user}" />
+            app:user_age="20" />
+
+        <TextView
+            android:id="@+id/textViewData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dummy_Data"/>
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Data" />
 
     </LinearLayout>
 </layout>
